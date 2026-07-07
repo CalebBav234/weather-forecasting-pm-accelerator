@@ -1,0 +1,59 @@
+name: weather_forecasting
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.12
+
+  - numpy
+  - pandas
+  - polars
+
+  - scipy
+
+  - matplotlib
+  - plotly
+  - seaborn
+
+  - scikit-learn
+
+  - statsmodels
+
+  - prophet
+
+  - xgboost
+  - lightgbm
+  - catboost
+
+  - tensorflow
+
+  - pytorch
+
+  - shap
+
+  - optuna
+
+  - joblib
+
+  - geopandas
+
+  - folium
+
+  - streamlit
+
+  - jupyterlab
+
+  - ipykernel
+
+  - pip
+
+  - pip:
+      - mlflow
+      - black
+      - ruff
+      - isort
+      - pytest
+      - pre-commit
+      - json-server

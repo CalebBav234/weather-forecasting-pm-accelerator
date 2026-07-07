@@ -1,19 +1,32 @@
+# -----------------------
 # Python
+# -----------------------
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+
+# Compiled files
+*.so
+*.dll
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+weather_forecasting/
+
+# Conda
+.conda/
 
 # Jupyter
 .ipynb_checkpoints/
 
-# Conda
-.env
-.venv
-*.egg-info/
-
 # VS Code
 .vscode/
+
+# PyCharm
+.idea/
 
 # macOS
 .DS_Store
@@ -25,20 +38,35 @@ Thumbs.db
 logs/
 *.log
 
-# Data
-data/processed/*
-outputs/*
-models/trained/*
-
 # MLflow
 mlruns/
 
-# Environment
-environment.yml
-.env/
-.venv/
+# Model artifacts
+*.h5
+*.keras
+*.pt
+*.pth
+*.joblib
+*.pkl
 
-# IDEs
-.idea/
-*.swp
-*.swo
+# Outputs
+outputs/
+models/trained/
+
+# Processed data
+data/processed/
+
+# Raw datasets (keep Kaggle dataset local)
+data/raw/*.csv
+data/raw/*.parquet
+data/raw/*.zip
+
+# Environment variables
+.env
+
+# Coverage
+.coverage
+htmlcov/
+
+# pytest
+.pytest_cache/
