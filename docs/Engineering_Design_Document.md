@@ -299,3 +299,577 @@ The final repository should resemble a professional machine learning project tha
 ---
 
 **End of Part 1**
+# Part 2 — System Architecture & Repository Design
+
+---
+
+# System Overview
+
+## Architectural Vision
+
+The Advanced Weather Forecasting and Climate Analytics Platform is designed as a modular, production-inspired machine learning system. Rather than relying on a single notebook containing every step of the analysis, the project separates responsibilities into reusable Python modules, ensuring that each component has a single, well-defined purpose.
+
+The architecture follows a layered workflow beginning with raw data ingestion and ending with an interactive analytics dashboard and reproducible deliverables. Every layer depends only on the outputs of the previous layer, minimizing coupling and making the system easier to test, maintain, and extend.
+
+---
+
+# High-Level Data Flow
+
+```text
+                    Kaggle Weather Dataset
+                              │
+                              ▼
+                    Data Validation Layer
+                              │
+                              ▼
+                    Data Cleaning Layer
+                              │
+                              ▼
+                Feature Engineering Layer
+                              │
+                              ▼
+             Exploratory Data Analysis Layer
+                              │
+                              ▼
+               Forecasting & Modeling Layer
+                              │
+                              ▼
+              Model Evaluation & Backtesting
+                              │
+                              ▼
+            Explainability & Feature Analysis
+                              │
+                              ▼
+               Streamlit Dashboard & Reports
+                              │
+                              ▼
+                GitHub Repository Deliverables
+```
+
+---
+
+# Layer Responsibilities
+
+## Layer 1 — Data Validation
+
+Purpose:
+
+Verify that the raw dataset satisfies basic quality requirements before any transformations occur.
+
+Responsibilities:
+
+- Validate schema
+- Validate column names
+- Detect missing columns
+- Verify data types
+- Detect duplicate observations
+- Detect impossible values
+- Generate validation summary
+
+Output:
+
+Validated raw dataframe.
+
+---
+
+## Layer 2 — Data Cleaning
+
+Purpose:
+
+Prepare reliable data for analysis.
+
+Responsibilities:
+
+- Handle missing values
+- Remove duplicates
+- Correct data types
+- Standardize categorical values
+- Handle invalid observations
+- Remove unnecessary columns (if justified)
+
+Output:
+
+Clean dataframe.
+
+---
+
+## Layer 3 — Feature Engineering
+
+Purpose:
+
+Transform cleaned observations into informative predictive features.
+
+Planned feature groups:
+
+### Temporal Features
+
+- Hour
+- Day
+- Week
+- Month
+- Quarter
+- Year
+- Weekend indicator
+
+---
+
+### Cyclical Features
+
+Encode:
+
+- Hour
+- Month
+- Day of year
+
+using sine/cosine transformations.
+
+---
+
+### Rolling Statistics
+
+Examples:
+
+- Rolling temperature mean
+- Rolling humidity average
+- Rolling pressure trend
+
+---
+
+### Lag Features
+
+Examples:
+
+Temperature(t-1)
+
+Temperature(t-3)
+
+Temperature(t-6)
+
+Temperature(t-24)
+
+Humidity lags
+
+Pressure lags
+
+---
+
+### Interaction Features
+
+Examples:
+
+Temperature × Humidity
+
+Wind × Pressure
+
+Humidity × Dew Point
+
+---
+
+Output:
+
+Model-ready dataset.
+
+---
+
+## Layer 4 — Exploratory Data Analysis
+
+Purpose:
+
+Understand the dataset before modeling.
+
+Questions answered:
+
+- Which variables are most correlated?
+- Are seasonal patterns visible?
+- Which countries exhibit different climates?
+- Are air quality indicators related to weather variables?
+- Which variables contain outliers?
+- Which variables change over time?
+
+Deliverables:
+
+- Heatmaps
+- Correlation matrices
+- Histograms
+- Geographic visualizations
+- Trend plots
+- Boxplots
+- Pairplots (where appropriate)
+
+---
+
+## Layer 5 — Forecasting
+
+Purpose:
+
+Predict future weather variables.
+
+Candidate models:
+
+- Baseline Forecast
+- ARIMA
+- SARIMA
+- Prophet
+- XGBoost
+- LightGBM
+- CatBoost
+- LSTM (if justified)
+
+Final models will be selected based on objective evaluation rather than preference.
+
+---
+
+## Layer 6 — Evaluation
+
+Responsibilities:
+
+- Time-series cross-validation
+- Residual analysis
+- Error metrics
+- Forecast comparison
+- Statistical interpretation
+
+Primary metrics:
+
+- RMSE
+- MAE
+- MAPE
+- R² (where appropriate)
+
+---
+
+## Layer 7 — Explainability
+
+Purpose:
+
+Explain why models make predictions.
+
+Methods:
+
+- SHAP values
+- Feature importance
+- Partial dependence plots (if appropriate)
+
+Deliverables:
+
+- Global explanations
+- Local explanations
+- Feature ranking
+
+---
+
+## Layer 8 — Dashboard
+
+Purpose:
+
+Provide an interactive interface for exploring the project.
+
+Planned sections:
+
+- Dataset Overview
+- Exploratory Analysis
+- Climate Trends
+- Air Quality
+- Forecast Results
+- Model Comparison
+- Explainability
+- About the Project
+
+---
+
+# Repository Architecture
+
+The repository follows a modular structure where each directory has a clearly defined responsibility.
+
+## src/
+
+Contains reusable Python modules.
+
+No exploratory code should exist here.
+
+---
+
+## notebooks/
+
+Contains exploratory notebooks only.
+
+Responsibilities:
+
+- Data exploration
+- Visualization
+- Experimentation
+
+No production logic should be duplicated here.
+
+---
+
+## data/
+
+Contains:
+
+Raw data
+
+Processed data
+
+External resources
+
+The raw dataset should never be modified directly.
+
+---
+
+## models/
+
+Stores trained model artifacts when appropriate.
+
+Large files should not be committed unless explicitly required.
+
+---
+
+## outputs/
+
+Stores generated results.
+
+Examples:
+
+- Figures
+- Metrics
+- Predictions
+- Logs
+
+Outputs should be reproducible.
+
+---
+
+## docs/
+
+Contains documentation.
+
+Examples:
+
+- Engineering Design Document
+- Technical Report
+- Presentation
+- Architecture diagrams
+
+---
+
+## dashboard/
+
+Contains the Streamlit application.
+
+---
+
+## tests/
+
+Contains automated tests.
+
+Every reusable module should eventually have corresponding tests.
+
+---
+
+# Module Responsibilities
+
+Each Python module has one primary responsibility.
+
+## config.py
+
+Stores configurable project parameters.
+
+Examples:
+
+Random seed
+
+Target variable
+
+Forecast horizon
+
+Feature flags
+
+---
+
+## paths.py
+
+Centralizes filesystem paths.
+
+No hardcoded paths elsewhere.
+
+---
+
+## constants.py
+
+Stores constant values shared across the project.
+
+Examples:
+
+Column names
+
+Metric names
+
+Default settings
+
+---
+
+## utils.py
+
+Reusable helper functions.
+
+Must remain generic.
+
+No forecasting logic.
+
+---
+
+## preprocessing.py
+
+Responsible ONLY for:
+
+- Cleaning
+- Validation
+- Missing values
+- Duplicates
+- Data types
+
+No feature engineering.
+
+---
+
+## feature_engineering.py
+
+Responsible ONLY for creating predictive features.
+
+Must never perform cleaning.
+
+---
+
+## visualization.py
+
+Generates reusable visualizations.
+
+Should not modify datasets.
+
+---
+
+## forecasting.py
+
+Responsible for training forecasting models.
+
+No visualization logic.
+
+---
+
+## evaluation.py
+
+Responsible for performance metrics and model comparison.
+
+---
+
+## ensemble.py
+
+Combines forecasting models.
+
+No preprocessing.
+
+---
+
+## dashboard.py
+
+Interfaces with Streamlit.
+
+Should not train models.
+
+---
+
+# Module Dependency Rules
+
+Allowed flow:
+
+```
+config
+
+↓
+
+paths
+
+↓
+
+preprocessing
+
+↓
+
+feature_engineering
+
+↓
+
+forecasting
+
+↓
+
+evaluation
+
+↓
+
+dashboard
+```
+
+Forbidden dependencies:
+
+- Dashboard importing preprocessing logic.
+- Forecasting importing dashboard code.
+- Visualization modifying datasets.
+- Utilities importing forecasting modules.
+
+Dependencies should always point forward through the pipeline.
+
+---
+
+# Configuration Strategy
+
+Configuration should be centralized.
+
+Avoid hardcoded values.
+
+Every configurable parameter should exist in:
+
+config.py
+
+Future changes should require modifying configuration rather than implementation.
+
+---
+
+# Logging Strategy
+
+Every major pipeline stage should produce informative logs.
+
+Suggested logging levels:
+
+INFO
+
+WARNING
+
+ERROR
+
+Logging should capture:
+
+- Pipeline execution
+- Data validation results
+- Model training
+- Evaluation summaries
+- Errors
+
+---
+
+# Design Principles
+
+The project follows the following engineering principles:
+
+- Single Responsibility Principle
+- Separation of Concerns
+- DRY (Don't Repeat Yourself)
+- KISS (Keep It Simple)
+- Reproducibility First
+- Configuration Over Hardcoding
+- Explicit Is Better Than Implicit
+
+---
+
+# End of Part 2
