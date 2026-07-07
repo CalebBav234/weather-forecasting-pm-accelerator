@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Conda
+.env
+.venv
+*.egg-info/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Data
+data/processed/*
+outputs/*
+models/trained/*
+
+# MLflow
+mlruns/
+
+# Environment
+environment.yml
+.env/
+.venv/
+
+# IDEs
+.idea/
+*.swp
+*.swo
