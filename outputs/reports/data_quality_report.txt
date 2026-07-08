@@ -1,0 +1,90 @@
+================================================================================
+GLOBAL WEATHER DATASET - DATA QUALITY REPORT
+================================================================================
+Rows: 151,827
+Columns: 41
+
+Memory Usage: 128.01 MB
+
+DATA TYPES
+--------------------------------------------------------------------------------
+float64    23
+object     11
+int64       7
+Name: count, dtype: int64
+
+MISSING VALUES
+--------------------------------------------------------------------------------
+country                         0
+location_name                   0
+latitude                        0
+longitude                       0
+timezone                        0
+last_updated_epoch              0
+last_updated                    0
+temperature_celsius             0
+temperature_fahrenheit          0
+condition_text                  0
+wind_mph                        0
+wind_kph                        0
+wind_degree                     0
+wind_direction                  0
+pressure_mb                     0
+pressure_in                     0
+precip_mm                       0
+precip_in                       0
+humidity                        0
+cloud                           0
+feels_like_celsius              0
+feels_like_fahrenheit           0
+visibility_km                   0
+visibility_miles                0
+uv_index                        0
+gust_mph                        0
+gust_kph                        0
+air_quality_Carbon_Monoxide     0
+air_quality_Ozone               0
+air_quality_Nitrogen_dioxide    0
+air_quality_Sulphur_dioxide     0
+air_quality_PM2.5               0
+air_quality_PM10                0
+air_quality_us-epa-index        0
+air_quality_gb-defra-index      0
+sunrise                         0
+sunset                          0
+moonrise                        0
+moonset                         0
+moon_phase                      0
+moon_illumination               0
+dtype: int64
+
+Duplicate Rows: 0
+
+NUMERICAL SUMMARY
+--------------------------------------------------------------------------------
+            latitude      longitude  ...  air_quality_gb-defra-index  moon_illumination
+count  151827.000000  151827.000000  ...               151827.000000      151827.000000
+mean       19.238971      21.889280  ...                    2.539173          50.355622
+std        24.400579      65.779044  ...                    2.398424          35.089480
+min       -41.300000    -175.200000  ...                    1.000000           0.000000
+25%         4.050300      -6.836100  ...                    1.000000          15.000000
+50%        17.250000      23.236100  ...                    2.000000          51.000000
+75%        40.400000      49.882200  ...                    3.000000          85.000000
+max        65.300000     179.220000  ...                   10.000000         100.000000
+
+[8 rows x 30 columns]
+
+TOP 10 CITIES
+--------------------------------------------------------------------------------
+location_name
+Sanaa        782
+Kyiv         781
+Asmara       781
+Bern         781
+Suva         781
+Dakar        781
+Bujumbura    781
+Accra        781
+Tokyo        781
+Tashkent     781
+Name: count, dtype: int64

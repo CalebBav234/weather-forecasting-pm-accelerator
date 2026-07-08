@@ -1,0 +1,115 @@
+================================================================================
+GLOBAL WEATHER DATA PROFILE
+================================================================================
+
+Rows: 151,827
+Columns: 41
+
+DATA TYPES
+--------------------------------------------------------------------------------
+float64    23
+object     11
+int64       7
+Name: count, dtype: int64
+
+NUMERIC FEATURES
+--------------------------------------------------------------------------------
+latitude
+longitude
+last_updated_epoch
+temperature_celsius
+temperature_fahrenheit
+wind_mph
+wind_kph
+wind_degree
+pressure_mb
+pressure_in
+precip_mm
+precip_in
+humidity
+cloud
+feels_like_celsius
+feels_like_fahrenheit
+visibility_km
+visibility_miles
+uv_index
+gust_mph
+gust_kph
+air_quality_Carbon_Monoxide
+air_quality_Ozone
+air_quality_Nitrogen_dioxide
+air_quality_Sulphur_dioxide
+air_quality_PM2.5
+air_quality_PM10
+air_quality_us-epa-index
+air_quality_gb-defra-index
+moon_illumination
+
+CATEGORICAL FEATURES
+--------------------------------------------------------------------------------
+country
+location_name
+timezone
+last_updated
+condition_text
+wind_direction
+sunrise
+sunset
+moonrise
+moonset
+moon_phase
+
+TOP COUNTRIES
+--------------------------------------------------------------------------------
+country
+Bulgaria      1785
+Indonesia     1562
+Thailand      1559
+Turkey        1555
+Sudan         1555
+Bolivia       1548
+Iran          1515
+Belgium       1464
+Madagascar    1238
+Vietnam       1234
+Name: count, dtype: int64
+
+TOP CITIES
+--------------------------------------------------------------------------------
+location_name
+Sanaa        782
+Kyiv         781
+Asmara       781
+Bern         781
+Suva         781
+Dakar        781
+Bujumbura    781
+Accra        781
+Tokyo        781
+Tashkent     781
+Name: count, dtype: int64
+
+WEATHER CONDITIONS
+--------------------------------------------------------------------------------
+condition_text
+Sunny                                  44300
+Partly cloudy                          42052
+Patchy rain nearby                     13043
+Partly Cloudy                          10208
+Clear                                   8237
+Overcast                                8115
+Mist                                    6229
+Light rain                              4659
+Light rain shower                       3494
+Fog                                     1900
+Cloudy                                  1879
+Moderate or heavy rain with thunder     1179
+Moderate rain                           1111
+Patchy light rain with thunder           930
+Light drizzle                            751
+Light snow                               525
+Patchy light drizzle                     516
+Thundery outbreaks in nearby             328
+Moderate or heavy rain shower            323
+Patchy light rain                        270
+Name: count, dtype: int64

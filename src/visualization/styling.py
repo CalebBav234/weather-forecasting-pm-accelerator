@@ -1,30 +1,54 @@
 """
-Shared plotting utilities.
+Shared visualization styling utilities.
 
-All visualizations should use the same style, figure size,
-resolution, and saving behavior.
+Provides reusable helper functions for initializing,
+formatting, displaying, and saving plots.
 """
+
+from __future__ import annotations
 
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 
+
+
 DEFAULT_FIGSIZE = (12, 6)
-DEFAULT_DPI = 300
 
 
-def set_plot_style() -> None:
+
+def initialize_plot(figsize: tuple = DEFAULT_FIGSIZE) -> None:
     """
-    Configure a consistent plotting style for the project.
+    Initialize a new matplotlib figure.
     """
 
-    plt.style.use("ggplot")
+    plt.figure(figsize=figsize)
 
-    plt.rcParams["axes.titlesize"] = 16
-    plt.rcParams["axes.labelsize"] = 13
-    plt.rcParams["xtick.labelsize"] = 11
-    plt.rcParams["ytick.labelsize"] = 11
-    plt.rcParams["legend.fontsize"] = 11
+
+
+
+def finalize_plot(
+    title: str,
+    xlabel: str,
+    ylabel: str,
+) -> None:
+    """
+    Apply standardized formatting.
+    """
+
+    plt.title(title)
+
+    plt.xlabel(xlabel)
+
+    plt.ylabel(ylabel)
+
+    plt.grid(
+        alpha=0.30,
+    )
+
+    plt.tight_layout()
+
+
 
 
 def save_figure(
@@ -32,24 +56,32 @@ def save_figure(
     category: str,
 ) -> None:
     """
-    Save the current matplotlib figure.
+    Save figure inside outputs/figures/<category>.
     """
 
-    output_directory = (
+    output_dir = (
         Path("outputs")
         / "figures"
         / category
     )
 
-    output_directory.mkdir(
+    output_dir.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    plt.tight_layout()
-
     plt.savefig(
-        output_directory / filename,
-        dpi=DEFAULT_DPI,
+        output_dir / filename,
+        dpi=300,
         bbox_inches="tight",
     )
+
+
+
+
+def display_plot() -> None:
+    """
+    Display current figure.
+    """
+
+    plt.show()
