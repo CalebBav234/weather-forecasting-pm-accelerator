@@ -1,0 +1,4 @@
+Model,Rank,MAE,RMSE,R2
+Random Forest,1,1.35,2.01,0.96
+Linear Regression,2,2.71,3.92,0.86
+Baseline,3,8.34,11.42,0.0
